@@ -1,3 +1,6 @@
+if [ ! -e "$(pwd)"/prj ]; then
+  mkdir prj
+fi
 if [ `docker ps -a | grep 'ubuntu-dev' | wc -l` -lt 1 ]; then
   docker run -dt \
 	--mount type=bind,source="$(pwd)"/prj,target=/home/user/prj \

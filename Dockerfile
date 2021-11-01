@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y \
 	openmpi-bin libopenmpi-dev \
 	netcdf-bin libnetcdf-dev libnetcdff-dev \
 	python3 python3-pip \
+ && apt-get clean \
+ && apt-get install -y fftw3 fftw3 fftw3-dev \
  && apt-get clean
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
@@ -20,3 +22,7 @@ RUN useradd -ms /bin/bash user
 
 USER user
 WORKDIR /home/user
+
+RUN pip3 install numpy --user \
+ && pip3 install matplotlib --user
+
